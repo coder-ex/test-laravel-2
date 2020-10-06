@@ -18,14 +18,14 @@
     curl -u 'coder-ex@yandex.ru' https://api.github.com/user/repos -d'{"name":"test-laravel-2"}'
 - получение данных о репо:
 >
-    curl -q -X GET -u coder-ex@yandex.ru:Pass_2019_01 -o curl_20 https://coder-ex@bitbucket.org/webcommands/template_laravel
+    curl -q -X GET -u coder-ex@yandex.ru:Pass_2019_01 -o curl_20 https://coder-ex@bitbucket.org/webcommands/test-laravel-2
 ***
 - перейти в каталог разработки - !! не проекта !!
 >
     cd path_devel
 - получить репозиторий:
 >
-    git clone https://coder-ex@bitbucket.org/webcommands/template.git
+    git clone https://coder-ex@bitbucket.org/webcommands/test-laravel-2.git
 - переименовать шаблон в каталог проекта:
 >
     mv template name_project
@@ -40,7 +40,7 @@
     git push -u origin master
 - если репо создаем из командной строки, то
 >
-    git remote add origin https://coder-ex@bitbucket.org/webcommands/template_laravel.git
+    git remote add origin https://coder-ex@bitbucket.org/webcommands/test-laravel-2.git
 
 2._***[DOCKER](https://docs.docker.com/install/linux/docker-ce/ubuntu/)***
 ---
