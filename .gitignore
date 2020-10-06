@@ -1,0 +1,27 @@
+###> General for docker container ###
+/.idea/
+/.git/
+/source/db/
+/source/logs/
+/source/redis/
+/tmp_src/
+###> END General for docker container ###
+
+###> Node JS ###
+/source/project/node_modules/
+###> END Node JS ###
+
+###> laravel/framework-bundle ###
+/source/project/node_modules
+/source/project/public/hot
+/source/project/public/storage
+/source/project/storage/*.key
+/source/project/vendor
+/source/project/.env
+/source/project/.env.backup
+/source/project/.phpunit.result.cache
+/source/project/Homestead.json
+/source/project/Homestead.yaml
+/source/project/npm-debug.log
+/source/project/yarn-error.log
+###< END laravel/framework-bundle ###
