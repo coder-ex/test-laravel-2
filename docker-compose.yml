@@ -15,6 +15,7 @@ services:
       PHP_IDE_CONFIG: "serverName=Docker"
     ports:
       - "3000:3000"
+      - "6001:6001"
     networks:
       - internal
 

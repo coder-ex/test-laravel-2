@@ -157,10 +157,20 @@
 >        ],
 
     composer require predis/predis
-    npm install express - (базовая библиотека для фреймворка NodeJS)
-    npm install ioredis - клиент для REDIS сервера
-    npm install socket.io - библиотека для обмена данными в реальном времени (websocket, сервер)
-    npm install socket.io-client - websocket, client
+- проверим слошает ли redis порт
+>
+    netstat -an | grep 6379
+- для работы с очередями изменить
+>
+    QUEUE_CONNECTION=sync на QUEUE_CONNECTION=redis
+
+    sudo npm install -g laravel-echo-server - ставим ОБЯЗАТЕЛЬНО!! глобально
+    
+    laravel-echo-server init - создание конфиг-файла для эхо сервера
+    laravel-echo-server start - команда для запуска эхо-сервера
+    
+    npm install --save laravel-echo - какая то утилита для эхо-сервера
+    npm install --save socket.io-client - websocket, client
 
 4._**NODEJS ЗАПУСК ИНСТАЛЯЦИИ ШАБЛОНА В КОНТЕЙНЕРЕ**
 ---
@@ -190,7 +200,7 @@
 - как подключить owl carousel в laravel ?
 >
     Устанавливаем через npm или yarn:
-    npm i -s vue-owl-carouse
+    npm i -s vue-owl-carousel
     Подключаем в bootstrap.js
     - Laravel ниже 5.7 resources/assets/js/bootstrap.js
     - Laravel 5.7 и выше resources/js/bootstrap.js
