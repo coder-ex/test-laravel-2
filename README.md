@@ -13,9 +13,9 @@
 - создание репо из bash:
 >
     BITBUCKET
-    curl -X POST -v -u coder-ex@yandex.ru:pass_xxx -H "Content-Type: application/json" https://api.bitbucket.org/2.0/repositories/webcommands/template_laravel -d '{"scm": "git", "project": { "key": "WTPROJ" }, "is_private": "true", "fork_policy": "no_public_forks" }'
+    curl -X POST -v -u coder-ex@yandex.ru:pass_xxx -H "Content-Type: application/json" https://api.bitbucket.org/2.0/repositories/webcommands/test-laravel-2 -d '{"scm": "git", "project": { "key": "WTPROJ" }, "is_private": "true", "fork_policy": "no_public_forks" }'
     GITHUB
-    curl -u 'coder-ex@yandex.ru' https://api.github.com/user/repos -d'{"name":"template_laravel"}'
+    curl -u 'coder-ex@yandex.ru' https://api.github.com/user/repos -d'{"name":"test-laravel-2"}'
 - получение данных о репо:
 >
     curl -q -X GET -u coder-ex@yandex.ru:Pass_2019_01 -o curl_20 https://coder-ex@bitbucket.org/webcommands/template_laravel
