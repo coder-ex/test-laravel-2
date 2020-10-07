@@ -13,6 +13,7 @@
 
 <script>
     export default {
+        props: ['room'],
         data() {
             return {
                 messages: [],
@@ -20,14 +21,14 @@
             }
         },
         mounted() {
-            window.Echo.channel('channel-chat')
-                .listen('Message', (e) => {
-                    this.messages.push(e.message);
+            window.Echo.private('room.' + this.room.id)
+                .listen('PrivateMessage', (e) => {
+                    this.messages.push(e.message.body);
                 });
         },
         methods: {
             sendMessage() {
-                axios.post('/messages', { body: this.textMessage });
+                axios.post('/messages', { body: this.textMessage, room_id: this.room.id });
                 this.messages.push(this.textMessage);
                 this.textMessage = '';
             }

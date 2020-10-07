@@ -162,7 +162,7 @@
     netstat -an | grep 6379
 - для работы с очередями изменить
 >
-    QUEUE_CONNECTION=sync на QUEUE_CONNECTION=redis
+    изменить в .env QUEUE_CONNECTION=sync на QUEUE_CONNECTION=redis
 
     sudo npm install -g laravel-echo-server - ставим ОБЯЗАТЕЛЬНО!! глобально
     

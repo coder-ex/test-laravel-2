@@ -7,7 +7,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @section('title')
+        <title>{{ config('app.name', 'Laravel') }}</title>
+    @show
+
+    @section('description')
+        <meta name="description" content="Descriptions default">
+    @show
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

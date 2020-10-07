@@ -6,7 +6,6 @@
 
 @section('content')
     <div class="container">
-{{--        <chat-component></chat-component>--}}
-        <private-chat-component></private-chat-component>
+        <private-chat-component :room="{{ $room  }}"></private-chat-component>
     </div>
 @endsection

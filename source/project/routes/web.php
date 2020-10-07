@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::post('messages', 'MessageController@outMessage');
+Route::get('/room/{room}', 'MessageController@getRoom');
 
 Auth::routes();
 
