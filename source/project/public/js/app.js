@@ -2082,19 +2082,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['room'],
+  props: ['room', 'user'],
   data: function data() {
     return {
       messages: [],
-      textMessage: ''
+      textMessage: '',
+      isActive: false,
+      typingTimer: false,
+      activeUsers: []
     };
+  },
+  computed: {
+    channel: function channel() {
+      return window.Echo.join('room.' + this.room.id);
+    }
   },
   mounted: function mounted() {
     var _this = this;
 
-    window.Echo["private"]('room.' + this.room.id).listen('PrivateMessage', function (e) {
+    this.channel.here(function (users) {
+      _this.activeUsers = users;
+    }).joining(function (user) {
+      _this.activeUsers.push(user);
+    }).leaving(function (user) {
+      _this.activeUsers.splice(_this.activeUsers.indexOf(user), 1);
+    }).listen('PrivateMessage', function (e) {
       _this.messages.push(e.message.body);
+
+      _this.isActive = false;
+    }).listenForWhisper('typing', function (e) {
+      _this.isActive = e;
+      if (_this.typingTimer) clearTimeout(_this.typingTimer);
+      _this.typingTimer = setTimeout(function () {
+        _this.isActive = false;
+      }, 2000);
     });
   },
   methods: {
@@ -2105,6 +2133,11 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.messages.push(this.textMessage);
       this.textMessage = '';
+    },
+    actionUser: function actionUser() {
+      this.channel.whisper('typing', {
+        name: this.user.name
+      });
     }
   }
 });
@@ -51320,7 +51353,7 @@ var render = function() {
     _c("hr"),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
+      _c("div", { staticClass: "col-sm-8" }, [
         _c(
           "textarea",
           { staticClass: "form-control", attrs: { rows: "10", readonly: "" } },
@@ -51351,6 +51384,7 @@ var render = function() {
               }
               return _vm.sendMessage($event)
             },
+            keydown: _vm.actionUser,
             input: function($event) {
               if ($event.target.composing) {
                 return
@@ -51358,7 +51392,23 @@ var render = function() {
               _vm.textMessage = $event.target.value
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _vm.isActive
+          ? _c("span", [
+              _vm._v(_vm._s(_vm.isActive.name) + " набирает сообщение...")
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c(
+          "ul",
+          _vm._l(_vm.activeUsers, function(user) {
+            return _c("li", [_vm._v(_vm._s(user))])
+          }),
+          0
+        )
       ])
     ])
   ])

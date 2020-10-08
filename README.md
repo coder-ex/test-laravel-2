@@ -134,7 +134,8 @@
 >
     composer create-project --prefer-dist laravel/laravel project "7.0.*" - инсталяция нового проекта с версией 7.0.x
     (с версией 8.0.x не все пока ровно)
-    пароль для root == root (su)
+    пароль для root == r12345 (su)
+    пароль для www-data == u12345 (su)
     cd project
     php artisan - команды консоли
 - установка REST (хранилище в памяти, не реляционная СУБД)
